@@ -46,7 +46,7 @@
       .profile-welcome {
         margin: 0;
         color: #283d78;
-        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        font-size: clamp(1.75rem, 4vw, 2.75rem);
         letter-spacing: -0.06em;
         line-height: 1;
       }
@@ -118,8 +118,13 @@
 
       .travel-gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+        grid-auto-columns: minmax(200px, 240px);
+        grid-auto-flow: column;
         gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
       }
 
       .travel-gallery figure {
@@ -128,12 +133,13 @@
         border: 1px solid #d5e8f7;
         border-radius: 18px;
         background: #f7fbff;
+        scroll-snap-align: start;
       }
 
       .travel-gallery img {
         display: block;
         width: 100%;
-        aspect-ratio: 16 / 9;
+        height: 110px;
         object-fit: cover;
       }
 
@@ -233,7 +239,7 @@
   <body>
     <main>
       <header class="profile-header">
-        <h1 class="profile-welcome">Welcome to my site!</h1>
+        <h1 class="profile-welcome">Welcome to my site!!</h1>
         <div class="profile-card">
           <img
             class="profile-photo"
@@ -245,7 +251,7 @@
           <h2 class="profile-name">Hi, I’m Sarat!</h2>
         </div>
       </header>
-      <p class="intro">I’m a KIC student. I enjoy listening to music and travelling.</p>
+      <p class="intro">Hello everyone. Thank for stopping by and check my site. I'm Sarat, KIC student. I like travelling, listen to music, also some cooking. I’ve always wondered what lies beyond our world.</p>
 
       <section aria-labelledby="interests-heading">
         <h2 id="interests-heading">Things I enjoy</h2>
@@ -257,7 +263,7 @@
 
       <section class="travel-section" aria-labelledby="travel-heading">
         <h2 id="travel-heading">Travelling collection</h2>
-        <div class="travel-gallery">
+        <div class="travel-gallery" role="region" aria-label="Travel photos" tabindex="0">
           <figure>
             <img
               src="images/Cambodia0.jpg"
