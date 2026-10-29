@@ -38,13 +38,27 @@
 
       .profile-header {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         gap: 20px;
       }
 
-      .profile-photo {
+      .profile-welcome {
+        margin: 0;
+        color: #283d78;
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        letter-spacing: -0.06em;
+        line-height: 1;
+      }
+
+      .profile-card {
+        display: grid;
+        justify-items: center;
+        gap: 10px;
         flex: 0 0 auto;
+      }
+
+      .profile-photo {
         width: 96px;
         height: 96px;
         border: 3px solid #e9f4ff;
@@ -53,15 +67,11 @@
         object-position: center 35%;
       }
 
-      .eyebrow {
-        display: inline-block;
-        margin: 0 0 14px;
-        padding: 8px 13px;
-        border-radius: 999px;
-        background: #fff0dc;
-        color: #9b5514;
-        font-size: 0.9rem;
-        font-weight: 700;
+      .profile-name {
+        margin: 0;
+        color: #283d78;
+        font-size: 1.1rem;
+        text-align: center;
       }
 
       h1 {
@@ -108,13 +118,8 @@
 
       .travel-gallery {
         display: grid;
-        grid-auto-columns: minmax(200px, 240px);
-        grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
         gap: 12px;
-        overflow-x: auto;
-        padding-bottom: 8px;
-        overscroll-behavior-inline: contain;
-        scroll-snap-type: x mandatory;
       }
 
       .travel-gallery figure {
@@ -123,13 +128,12 @@
         border: 1px solid #d5e8f7;
         border-radius: 18px;
         background: #f7fbff;
-        scroll-snap-align: start;
       }
 
       .travel-gallery img {
         display: block;
         width: 100%;
-        height: 110px;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
       }
 
@@ -211,16 +215,17 @@
 
       @media (max-width: 480px) {
         .profile-header {
-          gap: 12px;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .profile-welcome {
+          font-size: clamp(2rem, 9vw, 2.8rem);
         }
 
         .profile-photo {
           width: 72px;
           height: 72px;
-        }
-
-        h1 {
-          font-size: clamp(2rem, 9vw, 4.5rem);
         }
       }
     </style>
@@ -228,17 +233,17 @@
   <body>
     <main>
       <header class="profile-header">
-        <div>
-          <p class="eyebrow">A little about me</p>
-          <h1>Hi, I’m Sarat!</h1>
+        <h1 class="profile-welcome">Welcome to my site!</h1>
+        <div class="profile-card">
+          <img
+            class="profile-photo"
+            src="images/profile.jpg"
+            alt="A cat wearing a costume"
+            width="1028"
+            height="1199"
+          >
+          <h2 class="profile-name">Hi, I’m Sarat!</h2>
         </div>
-        <img
-          class="profile-photo"
-          src="images/profile.jpg"
-          alt="A cat wearing a costume"
-          width="1028"
-          height="1199"
-        >
       </header>
       <p class="intro">I’m a KIC student. I enjoy listening to music and travelling.</p>
 
@@ -252,7 +257,7 @@
 
       <section class="travel-section" aria-labelledby="travel-heading">
         <h2 id="travel-heading">Travelling collection</h2>
-        <div class="travel-gallery" role="region" aria-label="Travel photos" tabindex="0">
+        <div class="travel-gallery">
           <figure>
             <img
               src="images/Cambodia0.jpg"
