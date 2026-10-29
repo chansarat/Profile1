@@ -94,6 +94,68 @@
         color: #6a5689;
         font-weight: 700;
       }
+
+      .message-section {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid #e7eaf4;
+      }
+
+      .message-form {
+        display: grid;
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 7px;
+        color: #283d78;
+        font-weight: 700;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #cbd3e3;
+        border-radius: 12px;
+        color: #23304a;
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #526fc0;
+        outline: 3px solid #526fc033;
+      }
+
+      button {
+        justify-self: start;
+        padding: 12px 18px;
+        border: 0;
+        border-radius: 12px;
+        background: #3857a4;
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: wait;
+        opacity: 0.65;
+      }
+
+      .form-status {
+        min-height: 1.5em;
+        margin: 0;
+        color: #526078;
+      }
     </style>
   </head>
   <body>
@@ -111,6 +173,70 @@
       </section>
 
       <p class="welcome">Nice to meet you!</p>
+
+      <section class="message-section" aria-labelledby="message-heading">
+        <h2 id="message-heading">Send me a message</h2>
+        <form
+          class="message-form"
+          id="message-form"
+          method="post"
+          action="https://YOUR-RENDER-SERVICE.onrender.com/messages"
+        >
+          <label for="sender-name">
+            Your name
+            <input id="sender-name" name="name" type="text" maxlength="80" autocomplete="name" required>
+          </label>
+          <label for="sender-message">
+            Your message
+            <textarea id="sender-message" name="message" maxlength="2000" required></textarea>
+          </label>
+          <button type="submit">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
     </main>
+    <script>
+      const messageForm = document.querySelector("#message-form");
+      const formStatus = document.querySelector("#form-status");
+      const submitButton = messageForm.querySelector("button[type='submit']");
+      const messageApiUrl = "https://YOUR-RENDER-SERVICE.onrender.com/messages";
+
+      messageForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (messageApiUrl.includes("YOUR-RENDER-SERVICE")) {
+          formStatus.textContent = "The message server is not connected yet.";
+          return;
+        }
+
+        submitButton.disabled = true;
+        formStatus.textContent = "Sending your message...";
+
+        try {
+          const response = await fetch(messageApiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: messageForm.elements.name.value,
+              message: messageForm.elements.message.value
+            })
+          });
+          const result = await response.json();
+
+          if (!response.ok) {
+            formStatus.textContent = result.error || "Your message could not be sent.";
+            return;
+          }
+
+          messageForm.reset();
+          formStatus.textContent = result.message;
+        } catch (error) {
+          console.error("Could not send the message.", error);
+          formStatus.textContent = "Could not reach the message server. Please try again.";
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    </script>
   </body>
 </html>
