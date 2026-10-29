@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Meet Sarat, a KIC student who enjoys music and travelling.">
+    <title>Meet Sarat</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #23304a;
+        background: #f4f7ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at 12% 15%, #ffdfb8 0, transparent 26%),
+          radial-gradient(circle at 90% 85%, #c9e8ff 0, transparent 30%),
+          #f4f7ff;
+      }
+
+      main {
+        width: min(100%, 680px);
+        padding: clamp(28px, 7vw, 56px);
+        border: 1px solid #e7eaf4;
+        border-radius: 28px;
+        background: #fff;
+        box-shadow: 0 20px 60px rgb(35 48 74 / 12%);
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin: 0 0 14px;
+        padding: 8px 13px;
+        border-radius: 999px;
+        background: #fff0dc;
+        color: #9b5514;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        color: #283d78;
+        font-size: clamp(2.5rem, 9vw, 4.5rem);
+        letter-spacing: -0.06em;
+        line-height: 1;
+      }
+
+      .intro {
+        margin: 20px 0 32px;
+        color: #526078;
+        font-size: 1.15rem;
+        line-height: 1.7;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        color: #283d78;
+        font-size: 1.1rem;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      li {
+        padding: 10px 15px;
+        border-radius: 999px;
+        background: #e9f4ff;
+        color: #315b83;
+        font-weight: 700;
+      }
+
+      .welcome {
+        margin: 32px 0 0;
+        padding-top: 20px;
+        border-top: 1px solid #e7eaf4;
+        color: #6a5689;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">A little about me</p>
+      <h1>Hi, I’m Sarat!</h1>
+      <p class="intro">I’m a KIC student. I enjoy listening to music and travelling.</p>
+
+      <section aria-labelledby="interests-heading">
+        <h2 id="interests-heading">Things I enjoy</h2>
+        <ul>
+          <li>🎵 Listening to music</li>
+          <li>✈️ Travelling</li>
+        </ul>
+      </section>
+
+      <p class="welcome">Nice to meet you!</p>
+    </main>
+  </body>
+</html>
