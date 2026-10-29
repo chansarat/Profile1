@@ -91,8 +91,13 @@
 
       .travel-gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        grid-auto-columns: minmax(200px, 240px);
+        grid-auto-flow: column;
         gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
       }
 
       .travel-gallery figure {
@@ -101,12 +106,13 @@
         border: 1px solid #d5e8f7;
         border-radius: 18px;
         background: #f7fbff;
+        scroll-snap-align: start;
       }
 
       .travel-gallery img {
         display: block;
         width: 100%;
-        aspect-ratio: 16 / 9;
+        height: 110px;
         object-fit: cover;
       }
 
@@ -203,7 +209,7 @@
 
       <section class="travel-section" aria-labelledby="travel-heading">
         <h2 id="travel-heading">Travelling collection</h2>
-        <div class="travel-gallery">
+        <div class="travel-gallery" role="region" aria-label="Travel photos" tabindex="0">
           <figure>
             <img
               src="images/travel-photo.png"
