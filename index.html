@@ -36,6 +36,23 @@
         box-shadow: 0 20px 60px rgb(35 48 74 / 12%);
       }
 
+      .profile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .profile-photo {
+        flex: 0 0 auto;
+        width: 96px;
+        height: 96px;
+        border: 3px solid #e9f4ff;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 35%;
+      }
+
       .eyebrow {
         display: inline-block;
         margin: 0 0 14px;
@@ -191,12 +208,38 @@
         margin: 0;
         color: #526078;
       }
+
+      @media (max-width: 480px) {
+        .profile-header {
+          gap: 12px;
+        }
+
+        .profile-photo {
+          width: 72px;
+          height: 72px;
+        }
+
+        h1 {
+          font-size: clamp(2rem, 9vw, 4.5rem);
+        }
+      }
     </style>
   </head>
   <body>
     <main>
-      <p class="eyebrow">A little about me</p>
-      <h1>Hi, I’m Sarat!</h1>
+      <header class="profile-header">
+        <div>
+          <p class="eyebrow">A little about me</p>
+          <h1>Hi, I’m Sarat!</h1>
+        </div>
+        <img
+          class="profile-photo"
+          src="images/profile.jpg"
+          alt="A cat wearing a costume"
+          width="1028"
+          height="1199"
+        >
+      </header>
       <p class="intro">I’m a KIC student. I enjoy listening to music and travelling.</p>
 
       <section aria-labelledby="interests-heading">
@@ -210,6 +253,46 @@
       <section class="travel-section" aria-labelledby="travel-heading">
         <h2 id="travel-heading">Travelling collection</h2>
         <div class="travel-gallery" role="region" aria-label="Travel photos" tabindex="0">
+          <figure>
+            <img
+              src="images/Cambodia0.jpg"
+              alt="Angkor Wat reflected in the water beneath a blue sky"
+              width="1280"
+              height="960"
+              loading="lazy"
+            >
+            <figcaption>Angkor Wat at the water's edge</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="images/Cambodia1.jpg"
+              alt="A view across the water framed by leafy branches"
+              width="1280"
+              height="960"
+              loading="lazy"
+            >
+            <figcaption>A leafy riverside view</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="images/Cambodia2.jpg"
+              alt="Sunset light through an airport cafe with sculptural decorations"
+              width="1280"
+              height="960"
+              loading="lazy"
+            >
+            <figcaption>Sunset at the airport</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="images/Cambodia3.jpg"
+              alt="Ancient stone temple ruins beneath a colorful evening sky"
+              width="1280"
+              height="960"
+              loading="lazy"
+            >
+            <figcaption>Temple ruins at sunset</figcaption>
+          </figure>
           <figure>
             <img
               src="images/travel-photo.png"
