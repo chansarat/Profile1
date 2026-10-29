@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Meet Sarat, a KIC student who enjoys music and travelling.">
+    <meta name="theme-color" content="#e6f4ff">
     <title>Meet Sarat</title>
     <style>
       :root {
         color-scheme: light;
         font-family: Arial, Helvetica, sans-serif;
         color: #23304a;
-        background: #f4f7ff;
+        background: #e6f4ff;
       }
 
       * {
@@ -23,10 +24,7 @@
         display: grid;
         place-items: center;
         padding: 24px;
-        background:
-          radial-gradient(circle at 12% 15%, #ffdfb8 0, transparent 26%),
-          radial-gradient(circle at 90% 85%, #c9e8ff 0, transparent 30%),
-          #f4f7ff;
+        background: #e6f4ff;
       }
 
       main {
@@ -85,6 +83,37 @@
         background: #e9f4ff;
         color: #315b83;
         font-weight: 700;
+      }
+
+      .travel-section {
+        margin-top: 30px;
+      }
+
+      .travel-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+        gap: 14px;
+      }
+
+      .travel-gallery figure {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid #d5e8f7;
+        border-radius: 18px;
+        background: #f7fbff;
+      }
+
+      .travel-gallery img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .travel-gallery figcaption {
+        padding: 11px 13px;
+        color: #526078;
+        font-size: 0.9rem;
       }
 
       .welcome {
@@ -170,6 +199,21 @@
           <li>🎵 Listening to music</li>
           <li>✈️ Travelling</li>
         </ul>
+      </section>
+
+      <section class="travel-section" aria-labelledby="travel-heading">
+        <h2 id="travel-heading">Travel memories</h2>
+        <div class="travel-gallery">
+          <figure>
+            <img
+              src="images/travel-photo.png"
+              alt="A lake beside forested hills covered in winter snow"
+              width="1024"
+              height="768"
+            >
+            <figcaption>A winter landscape by the water</figcaption>
+          </figure>
+        </div>
       </section>
 
       <p class="welcome">Nice to meet you!</p>
