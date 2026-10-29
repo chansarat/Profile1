@@ -22,6 +22,7 @@
         min-height: 100vh;
         margin: 0;
         display: grid;
+        grid-template-columns: minmax(0, 1fr);
         place-items: center;
         padding: 24px;
         background: #e6f4ff;
@@ -29,6 +30,7 @@
 
       main {
         width: min(100%, 1040px);
+        min-width: 0;
         padding: clamp(28px, 7vw, 56px);
         border: 1px solid #e7eaf4;
         border-radius: 28px;
@@ -38,17 +40,20 @@
 
       .profile-header {
         display: flex;
+        min-width: 0;
         align-items: flex-start;
         justify-content: space-between;
         gap: 20px;
       }
 
       .profile-welcome {
+        min-width: 0;
         margin: 0;
         color: #283d78;
         font-size: clamp(1.75rem, 4vw, 2.75rem);
         letter-spacing: -0.06em;
         line-height: 1;
+        overflow-wrap: anywhere;
       }
 
       .profile-card {
@@ -118,6 +123,8 @@
 
       .travel-gallery {
         display: grid;
+        width: 100%;
+        min-width: 0;
         grid-auto-columns: minmax(200px, 240px);
         grid-auto-flow: column;
         gap: 12px;
