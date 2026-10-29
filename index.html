@@ -180,7 +180,7 @@
           class="message-form"
           id="message-form"
           method="post"
-          action="https://YOUR-RENDER-SERVICE.onrender.com/messages"
+          action="https://profile1-message-server.onrender.com/messages"
         >
           <label for="sender-name">
             Your name
@@ -199,15 +199,10 @@
       const messageForm = document.querySelector("#message-form");
       const formStatus = document.querySelector("#form-status");
       const submitButton = messageForm.querySelector("button[type='submit']");
-      const messageApiUrl = "https://YOUR-RENDER-SERVICE.onrender.com/messages";
+      const messageApiUrl = "https://profile1-message-server.onrender.com/messages";
 
       messageForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-
-        if (messageApiUrl.includes("YOUR-RENDER-SERVICE")) {
-          formStatus.textContent = "The message server is not connected yet.";
-          return;
-        }
 
         submitButton.disabled = true;
         formStatus.textContent = "Sending your message...";
